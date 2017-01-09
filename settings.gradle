@@ -16,5 +16,5 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'PackageBuildTest'
+rootProject.name = 'Netflix-Spring-test'
 include ":sample-hystrix-dash",":sample-membership",":sample-recommendations",":sample-eureka"
