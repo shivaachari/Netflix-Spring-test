@@ -20,10 +20,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -47,10 +43,17 @@ import org.springframework.integration.endpoint.MethodInvokingMessageSource;
 import org.springframework.integration.support.management.DefaultMetricsFactory;
 import org.springframework.integration.support.management.MetricsFactory;
 import org.springframework.messaging.MessageChannel;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.collect.ImmutableMap;
 import com.netflix.appinfo.InstanceInfo.InstanceStatus;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @SpringBootApplication
 @EnableEurekaClient
@@ -63,7 +66,6 @@ public class Membership {
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 class Member {
 	String user;
     Integer age;
