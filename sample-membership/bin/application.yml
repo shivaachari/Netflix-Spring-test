@@ -1,0 +1,12 @@
+spring:
+  application.name: membership
+  autoconfigure.exclude: org.springframework.cloud.netflix.servo.ServoMetricsAutoConfiguration
+security.basic.enabled: false
+netflix:
+  spectator.rest.maxAge: 2000
+
+eureka:
+  instance.appGroupName: 'sample'
+  client.serviceUrl.defaultZone: http://localhost:9000/eureka/
+
+server.port: 8000
