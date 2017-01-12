@@ -1,0 +1,14 @@
+spring:
+  application.name: recommendationClient
+  autoconfigure.exclude: org.springframework.cloud.netflix.servo.ServoMetricsAutoConfiguration
+security.basic.enabled: false
+netflix:
+  appinfo.name: ${spring.application.name}
+
+eureka:
+  instance.appGroupName: 'default'
+  client.serviceUrl.defaultZone: http://ec2-52-66-174-246.ap-south-1.compute.amazonaws.com:9000/eureka/
+
+server.port: 8002
+endpoints.health.sensitive: false
+recommendations.ribbon.DeploymentContextBasedVipAddresses: recommendations
