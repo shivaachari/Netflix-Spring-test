@@ -16,6 +16,7 @@
 
 package com.netflix.spring.sample.membership;
 
+import java.net.InetAddress;
 import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -81,6 +82,21 @@ class Member {
 	public Integer getAge() {
 		return this.age;
 	}
+	
+	String hostName;
+	public String getHostName() {
+		return hostName;
+	}
+	public void setHostName(String hostName) {
+		this.hostName = hostName;
+	}
+
+	public Member(String user, Integer age, String hostName) {
+		super();
+		this.user = user;
+		this.age = age;
+		this.hostName = hostName;
+	}
 
 }
 
@@ -88,10 +104,21 @@ class Member {
 @RequestMapping("/api/member")
 @EnableAutoConfiguration
 class MembershipController {
-    final Map<String, Member> memberStore = ImmutableMap.of(
-        "jschneider", new Member("jschneider", 10),
-        "twicksell", new Member("twicksell", 30)
-    );
+	
+	static Map<String, Member> memberStore;
+	static String hostName;
+	static{
+	try{
+	 hostName = InetAddress.getLocalHost().getHostName();
+	}catch(Exception ex) {hostName = "Host"+Math.random()*3;}
+	
+	memberStore = ImmutableMap.of(
+	        "jschneider", new Member("jschneider", 10,hostName),
+	        "twicksell", new Member("twicksell", 30,hostName)
+	    );
+	}
+	
+	
 
     @RequestMapping(method = RequestMethod.POST)
     public Member register(@RequestBody Member member) {
@@ -101,9 +128,9 @@ class MembershipController {
 
     @RequestMapping(value="/{user}", produces = MediaType.APPLICATION_JSON_VALUE)
     Member login(@PathVariable(value = "user") String user) {
-    	delay();
+    	//delay();
     	Member mem = memberStore.get(user);
-    	System.out.println("Member "+mem+" => user: "+ mem.user + " age : "+mem.age);
+    	System.out.println("Member "+mem+" => user: "+ mem.user + " age : "+mem.age + " hostName : "+mem.hostName);
         return mem;
     }
     

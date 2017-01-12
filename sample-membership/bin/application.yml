@@ -7,6 +7,6 @@ netflix:
 
 eureka:
   instance.appGroupName: 'sample'
-  client.serviceUrl.defaultZone: http://localhost:9000/eureka/
+  client.serviceUrl.defaultZone: http://ec2-52-66-174-246.ap-south-1.compute.amazonaws.com:9000/eureka/
 
 server.port: 8000

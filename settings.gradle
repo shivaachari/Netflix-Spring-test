@@ -17,4 +17,4 @@ include 'services:webservice'
 */
 
 rootProject.name = 'Netflix-Spring-test'
-include ":sample-hystrix-dash",":sample-membership",":sample-recommendations",":sample-eureka"
+include ":sample-hystrix-dash",":sample-membership",":sample-recommendations",":sample-eureka",":sample-recommendationClient"
